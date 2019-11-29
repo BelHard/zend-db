@@ -11,8 +11,8 @@
 	"license": "BSD-3-Clause",
 	"require": {
 		"php": ">=5.2.11",
-		"zf1/zend-exception": "~1.12",
-		"zf1/zend-loader": "~1.12"
+		"zf1/zend-exception": "1.12.20",
+		"zf1/zend-loader": "1.12.20"
 	},
 	"autoload": {
 		"psr-0": {
