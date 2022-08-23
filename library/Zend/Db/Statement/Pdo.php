@@ -52,7 +52,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return void
      * @throws Zend_Db_Statement_Exception
      */
-    protected function _prepare($sql)
+    protected function _prepare($sql): void
     {
         try {
             $this->_stmt = $this->_adapter->getConnection()->prepare($sql);
@@ -72,7 +72,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function bindColumn($column, &$param, $type = null)
+    public function bindColumn($column, &$param, $type = null): bool
     {
         try {
             if ($type === null) {
@@ -97,7 +97,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    protected function _bindParam($parameter, &$variable, $type = null, $length = null, $options = null)
+    protected function _bindParam($parameter, &$variable, $type = null, $length = null, $options = null): bool
     {
         try {
             if ($type === null) {
@@ -127,7 +127,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function bindValue($parameter, $value, $type = null)
+    public function bindValue($parameter, $value, $type = null): bool
     {
         if (is_string($parameter) && $parameter[0] != ':') {
             $parameter = ":$parameter";
@@ -153,7 +153,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function closeCursor()
+    public function closeCursor(): bool
     {
         try {
             return $this->_stmt->closeCursor();
@@ -170,7 +170,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return int The number of columns.
      * @throws Zend_Db_Statement_Exception
      */
-    public function columnCount()
+    public function columnCount(): int
     {
         try {
             return $this->_stmt->columnCount();
@@ -187,7 +187,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return string error code.
      * @throws Zend_Db_Statement_Exception
      */
-    public function errorCode()
+    public function errorCode(): string
     {
         try {
             return $this->_stmt->errorCode();
@@ -204,7 +204,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return array
      * @throws Zend_Db_Statement_Exception
      */
-    public function errorInfo()
+    public function errorInfo(): array
     {
         try {
             return $this->_stmt->errorInfo();
@@ -221,7 +221,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function _execute(array $params = null)
+    public function _execute(array $params = null): bool
     {
         try {
             if ($params !== null) {
@@ -263,7 +263,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      *
      * @return IteratorIterator
      */
-    public function getIterator()
+    public function getIterator(): IteratorIterator
     {
         return new IteratorIterator($this->_stmt);
     }
@@ -276,7 +276,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return array Collection of rows, each in a format by the fetch mode.
      * @throws Zend_Db_Statement_Exception
      */
-    public function fetchAll($style = null, $col = null)
+    public function fetchAll($style = null, $col = null): array
     {
         if ($style === null) {
             $style = $this->_fetchMode;
@@ -303,7 +303,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return string
      * @throws Zend_Db_Statement_Exception
      */
-    public function fetchColumn($col = 0)
+    public function fetchColumn($col = 0): string
     {
         try {
             return $this->_stmt->fetchColumn($col);
@@ -373,7 +373,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function nextRowset()
+    public function nextRowset(): bool
     {
         try {
             return $this->_stmt->nextRowset();
@@ -391,7 +391,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return int     The number of rows affected.
      * @throws Zend_Db_Statement_Exception
      */
-    public function rowCount()
+    public function rowCount(): int
     {
         try {
             return $this->_stmt->rowCount();
@@ -409,7 +409,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function setAttribute($key, $val)
+    public function setAttribute($key, $val): bool
     {
         try {
             return $this->_stmt->setAttribute($key, $val);
@@ -426,7 +426,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      * @return bool
      * @throws Zend_Db_Statement_Exception
      */
-    public function setFetchMode($mode)
+    public function setFetchMode($mode): bool
     {
         $this->_fetchMode = $mode;
         try {
