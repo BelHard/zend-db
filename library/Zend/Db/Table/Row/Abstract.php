@@ -268,14 +268,15 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
         return $this->__isset($offset);
     }
 
+
     /**
      * Proxy to __get
      * Required by the ArrayAccess implementation
-     *
      * @param string $offset
-     * @return string
+     * @return string|null
+     * @throws Zend_Db_Table_Row_Exception
      */
-     public function offsetGet($offset): string
+    public function offsetGet($offset):? string
      {
          return $this->__get($offset);
      }
